@@ -2,6 +2,9 @@
   <div class="container" > <!--最外层容器-->
     <menus @gotoList="gotoList" ref="menus"></menus>
     <todo :selected="selected" @deleteList="deleteList"></todo>
+    <p>
+      <router-link to="/page2">to page2</router-link>
+    </p>
   </div>
 </template>
 <script>
