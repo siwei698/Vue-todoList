@@ -4,7 +4,7 @@
             <span class="lock" v-bind:class="{lock_hidden: !item.locked}" v-if="item.id == todoId"><img src="@/assets/lock_w.png"/></span>
             <span class="lock" v-bind:class="{lock_hidden: !item.locked}" v-if="item.id != todoId"><img src="@/assets/lock_b.png"/></span>
             <span class="title">{{item.title}}</span>
-            <div class="rightnumber">
+            <div class="circleNumber">
                 <div class="myCircle" :class="{'activeCircle': item.id == todoId}" v-if="item.count > 0"></div>
                 <span class="uncompleted" v-show="item.count">{{item.count}}</span>
             </div>
@@ -100,9 +100,12 @@
         .add_item{
             padding: 0 12px;
         }
-        .uncompleted{
-            float: right;
-            padding-right: 20px;
+    }
+    .menu_item{
+        min-width: 200px;
+        .title{
+            width: 50%;
+            text-align: left;
         }
     }
     .menu_add{
@@ -125,15 +128,20 @@
         position: relative;
         left: -1px;
     }
+    .circleNumber{
+        float: right;
+        width: 30px;
+    }
     .myCircle{
         width: 18px;
         height: 18px;
         border-radius: 9px;
         background-color: white;
         position: absolute;
-        margin-left: 221px;
+        margin-left: -20px;
         margin-top: 10px;
         z-index: -1;
+        display: inline-block;
     }
     .activeCircle{
         background-color: red;
