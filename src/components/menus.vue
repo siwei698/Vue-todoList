@@ -1,12 +1,16 @@
 <template>
     <div class="container">
         <a class="menu_item" :class="{'active': item.id == todoId}" @click="goList(item)" v-for="item in items" :key="item.id">
-            <span class="lock" v-bind:class="{lock_hidden: !item.locked}">锁</span>
+            <span class="lock" v-bind:class="{lock_hidden: !item.locked}" v-if="item.id == todoId"><img src="@/assets/lock_w.png"/></span>
+            <span class="lock" v-bind:class="{lock_hidden: !item.locked}" v-if="item.id != todoId"><img src="@/assets/lock_b.png"/></span>
             <span class="title">{{item.title}}</span>
-            <span class="uncompleted" v-show="item.count">{{item.count}}</span>
+            <div class="rightnumber">
+                <div class="myCircle" :class="{'activeCircle': item.id == todoId}" v-if="item.count > 0"></div>
+                <span class="uncompleted" v-show="item.count">{{item.count}}</span>
+            </div>
         </a>
         <a class="menu_add" @click="addList">
-            <span class="add_item">+</span>
+            <span class="add_item"><img class="plus" src="@/assets/plus2.png"/></span>
             <span class="text">新增</span>
         </a>
     </div>
@@ -101,7 +105,37 @@
             padding-right: 20px;
         }
     }
+    .menu_add{
+        .text{
+            margin-left: -2px;
+        }
+    }
     .active{
         color: white;
+    }
+    img{
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 2px;
+    }
+    img.plus{
+        width: 14px;
+        height: 14px;
+        position: relative;
+        left: -1px;
+    }
+    .myCircle{
+        width: 18px;
+        height: 18px;
+        border-radius: 9px;
+        background-color: white;
+        position: absolute;
+        margin-left: 221px;
+        margin-top: 10px;
+        z-index: -1;
+    }
+    .activeCircle{
+        background-color: red;
     }
 </style>

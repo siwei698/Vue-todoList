@@ -2,10 +2,10 @@
     <div class="container">
         <label class="checkbox">
             <input type="checkbox" v-model="item.checked" v-show="item.checked == false" @click="myAction(item.checked)" :disabled="todo.locked"/>
-            <span class="finishicon" v-show="item.checked == true">ok</span>
+            <span class="finishicon" v-show="item.checked == true"><img class="ok" src="@/assets/ok.png"/></span>
         </label>
         <input type="text" v-model="item.text" placeholder="添加点什么..." class="inputtext" :class="{checked: item.checked == true}" :disabled="todo.locked"/>
-        <span class="delete" v-show="item.checked == true" @click="deleteItem(item)">删除</span>
+        <span class="delete" v-show="item.checked == true" @click="deleteItem(item)"><img src="@/assets/crash.png"/></span>
     </div>
 </template>
 
@@ -47,5 +47,15 @@
     .checked{
         color: rgb(200, 200, 200);
         text-decoration: line-through;
+    }
+    img{
+        width: 15px;
+        height: 15px;
+        margin-right: 20px;
+    }
+    img.ok{
+        margin-right: 3px;
+        position: relative;
+        top: 3px;
     }
 </style>

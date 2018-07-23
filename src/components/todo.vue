@@ -4,15 +4,15 @@
             <h3>
                 <input class="titleEdit" type="text" v-model="todo.title" v-show="isEdit == true" @keyup.enter="isEdit = false"/>
                 <span class="title" v-show="isEdit == false" @click="isEdit = true">{{todo.title}}</span>
-                <span class="number">{{todo.count}}</span>
+                <!-- <span class="number">{{todo.count}}</span> -->
             </h3>
             <div class="icon">
-                <span class="lock" v-show="todo.locked" @click="myUnlock()">锁定</span>
-                <span class="lock" v-show="!todo.locked" @click="myLock()">未锁</span>
-                <span class="delete" v-show="todo.id != 1" @click="deleteList()">删除</span>
+                <span class="lock" v-show="todo.locked" @click="myUnlock()"><img src="@/assets/lock_b.png"/></span>
+                <span class="lock" v-show="!todo.locked" @click="myLock()"><img src="@/assets/unlock_b.png"/></span>
+                <span class="delete" v-show="todo.id != 1" @click="deleteList()"><img class="crash" src="@/assets/crash.png"/></span>
             </div>
             <div class="inputbox">
-                <span class="addicon">+</span>
+                <span class="addicon"><img class="plus" src="@/assets/plus2.png"/></span>
                 <input type="text" placeholder="请输入待办事项" v-model="text" @keyup.enter="onAdd" :disabled="todo.locked"/>
             </div>
         </div>
@@ -147,5 +147,20 @@
     .bottom{
         min-height: 500px;
         margin-top: 10px;
+    }
+    img{
+        width: 20px;
+        height: 20px;
+    }
+    img.crash{
+        width: 17px;
+        height: 17px;
+        margin-bottom: 1px;
+    }
+    img.plus{
+        width: 16px;
+        height: 16px;
+        position: relative;
+        top: 3px;
     }
 </style>
